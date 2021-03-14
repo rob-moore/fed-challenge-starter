@@ -37,7 +37,7 @@ export const WorkoutCard = (props) => {
             <img
               className="trainer"
               src={props.trainer}
-              alt="card splash image"
+              alt="card splash"
             ></img>
           </div>
         </div>
