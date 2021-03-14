@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { WorkoutCard } from "./components/WorkoutCard";
+import "./App.scss";
+import { cardData } from "./data/card-data";
 
 function App() {
+  const [state] = useState({
+    workoutCards: cardData,
+  });
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleClass = (index) => {
+    setActiveIndex(index);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {state.workoutCards.map((card, index) => (
+        <WorkoutCard
+          key={card.id}
+          onClick={() => toggleClass(index)}
+          trainer={card.trainerImage}
+          thumbnail={card.thumbnail}
+          title={card.title}
+          totalWorkouts={card.totalWorkouts}
+          className={activeIndex === index ? "card active" : "card"}
+          runTime={card.runTime}
+          distance={card.distance}
+        />
+      ))}
     </div>
   );
 }
