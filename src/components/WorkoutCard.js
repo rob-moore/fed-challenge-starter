@@ -34,7 +34,11 @@ export const WorkoutCard = (props) => {
         <div className="title-row">
           <h2 className="title">{props.title}</h2>
           <div className="wrapper">
-            <img className="trainer" src={props.trainer} alt="nice"></img>
+            <img
+              className="trainer"
+              src={props.trainer}
+              alt="card splash image"
+            ></img>
           </div>
         </div>
 
